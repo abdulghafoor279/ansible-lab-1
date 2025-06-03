@@ -1,0 +1,13 @@
+---
+######################## Start of Code ########################
+# Save Config on all routers within topology
+
+- hosts: routers
+  become: yes
+
+  tasks:
+    - name: Save running config to startup-config
+      cisco.ios.ios_config:
+        save_when: always
+        
+######################## End of Code ########################       

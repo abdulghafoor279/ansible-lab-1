@@ -1,0 +1,35 @@
+---
+
+######################## Start of Code ########################
+# Create a loopback address in all routers within topology
+
+- hosts: routers
+  gather_facts: false
+  become: yes
+
+  tasks:
+    - name: CHECK INTERFACE STATUS
+      ios_command:
+        commands:
+          - show run
+          - show ip int br
+          - show int des
+          - show clock
+          - show version
+          - show ip route
+          - show ip route eigrp
+          - show ip eigrp nei
+      register: config
+
+    - name: save output to local directory
+      copy:
+        content: "{{ config.stdout | replace('\\n', '\n') }}"
+        dest: "show-output/{{ inventory_hostname }}.ios"
+
+#      register: output
+
+#    - name: print output
+#      debug:
+#        var: output.stdout_lines
+
+######################## End of Code ########################  

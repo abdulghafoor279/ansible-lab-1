@@ -1,0 +1,28 @@
+---
+######################## Start of Code ########################
+# Remove loopback 0 in all routers within topology
+
+- hosts: routers
+  become: yes
+
+  tasks:
+    - name: Delete Loopback 0 interface completely
+      cisco.ios.ios_config:
+        lines:
+          - no Interface Loopback0
+#          - no Interface Loopback888
+
+#  tasks:
+#    - name: Remove IP address from Loopback100
+#      cisco.ios.ios_l3_interfaces:
+#        config:
+#          - name: Loopback100
+#        state: deleted
+#
+#    - name: Delete Loopback100 interface
+#      cisco.ios.ios_interfaces:
+#        config:
+#          - name: Loopback100
+#        state: deleted
+
+######################## End of Code ########################       

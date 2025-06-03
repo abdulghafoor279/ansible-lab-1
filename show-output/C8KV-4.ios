@@ -1,0 +1,360 @@
+['Building configuration...
+
+Current configuration : 6680 bytes
+!
+! Last configuration change at 01:34:59 UTC Tue May 27 2025 by admin
+! NVRAM config last updated at 01:56:33 UTC Tue May 27 2025 by admin
+!
+version 17.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+! Call-home is enabled by Smart-Licensing.
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname C8KV-4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authorization exec default local 
+!
+!
+aaa session-id common
+!
+!
+!
+!
+!
+!
+!
+ip domain name www.optilab.com
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+multilink bundle-name authenticated
+!
+!
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-3269828857
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3269828857
+ revocation-check none
+ rsakeypair TP-self-signed-3269828857
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  \tquit
+crypto pki certificate chain TP-self-signed-3269828857
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33323639 38323838 3537301E 170D3235 30353236 32313035 
+  32365A17 0D333530 35323632 31303532 365A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 32363938 
+  32383835 37308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 01008A2D E7A012C1 67A1614C 02BC9ACD 9C9D14DD 905FA3C4 CE43CAE4 
+  D56ED5BA 1A32D546 EF973C90 E3357499 39CEE569 F3EB25A5 CEFDC1AC 582352EA 
+  0DFBF8A0 1E19E371 B4D5FE06 C777569F FE74628F 09D9356F A1EF1A1D C9A397F2 
+  51755FF6 9313A226 68692674 7E5A11FE 625EC831 DEC38DB0 3ADC464E 632A111B 
+  14754906 4ACB3284 600AB72C 26F40493 F4EFCB80 1FB649BE 633D5B30 51096C05 
+  B2DDAC09 07B6F2B2 E11B349C 8C0FD393 D227EB2F 8CD2352F 3D65B76E 3F7AB8D4 
+  4E446C13 6B2EC148 BA91C4E3 88A7F729 DB1C2864 AF53158D 7673E800 7F53EF3F 
+  57851232 F7063717 C665DE8A AAEF2E09 95C2D2D1 E0435CE8 9A79580A DA86C58C 
+  5BD7F9A6 FCBD0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 14AE8734 F1A98F34 99F0244C F359D128 5185D71D 
+  F3301D06 03551D0E 04160414 AE8734F1 A98F3499 F0244CF3 59D12851 85D71DF3 
+  300D0609 2A864886 F70D0101 05050003 82010100 83EE095A 9C67340D 2A9F9D2A 
+  95728C61 770CA475 B3C8B1F3 A107C605 72510B2E 488BD88B 8C9AF6F3 CDF711E1 
+  B6E6EF29 60A8C274 8FAD5A40 2718287E 89A949EE 3115A5D9 F55FA2ED 47A17FC0 
+  E8FFA7AE F2349ECC 56B88507 5A386E59 C16DE4FA 1C479DEF 50D8D214 BD6B99E4 
+  1720E0B6 1E81EF64 0DD6243D 47985199 E4A689C4 2384EB6C 9AC1437C 682052D6 
+  CF7EF1C0 69E25075 5F84405B DA665CA8 A052E11F 58F1BE37 C0B1EC43 ABAE963A 
+  5C40C5B1 3FEC6C91 EC458BCA 9C71B5FC 12C7AE6B 971671AC 0793E17E 6866529B 
+  86F5D87D F04C6035 971A1BBA 85901CB3 A1CF036F 1E850317 1AF2125A 9ED16979 
+  F27CCBEA E8820EE9 9C0DB16E 33649E67 7CAB4F15
+  \tquit
+!
+license udi pid C8000V sn 9AH2ET3EJ0A
+diagnostic bootup level minimal
+memory free low-watermark processor 63676
+!
+!
+!
+enable secret 9 $9$eRwtvPBKXCkaIU$o9oM6CzMw0x7zcj7tY23AMMw09RDlGNqpHLfomG.9NY
+!
+username admin privilege 15 secret 9 $9$8x9B8F70/.F8ME$qEbGasQBuLYbcj2WVQgF/EYPVlmYOxg9dsrWHf1Q6HI
+!
+redundancy
+!
+!
+cdp run
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Created for Ansible Automation!
+ ip address 192.168.255.104 255.255.255.255
+!
+interface GigabitEthernet1
+ ip address 100.71.34.104 255.255.252.0
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 10.0.24.4 255.255.255.0
+ negotiation auto
+ cdp enable
+!
+interface GigabitEthernet3
+ ip address 10.0.34.4 255.255.255.0
+ negotiation auto
+ cdp enable
+!
+interface GigabitEthernet4
+ ip address 10.0.14.4 255.255.255.0
+ negotiation auto
+ cdp enable
+!
+!
+router eigrp 100
+ network 10.0.0.0 0.0.255.255
+ network 192.168.255.0
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip http client source-interface GigabitEthernet1
+!
+ip route 0.0.0.0 0.0.0.0 100.71.32.1
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+line vty 0 4
+ exec-timeout 0 0
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ exec-timeout 0 0
+ logging synchronous
+ transport input ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+!
+!
+!
+!
+!
+!
+end', 'Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       100.71.34.104   YES manual up                    up      
+GigabitEthernet2       10.0.24.4       YES manual up                    up      
+GigabitEthernet3       10.0.34.4       YES manual up                    up      
+GigabitEthernet4       10.0.14.4       YES manual up                    up      
+Loopback0              192.168.255.104 YES manual up                    up', 'Interface                      Status         Protocol Description
+Gi1                            up             up       
+Gi2                            up             up       
+Gi3                            up             up       
+Gi4                            up             up       
+Lo0                            up             up       Created for Ansible Automation!', '01:59:36.135 UTC Tue May 27 2025', 'Cisco IOS XE Software, Version 17.09.03a
+Cisco IOS Software [Cupertino], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.9.3a, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2023 by Cisco Systems, Inc.
+Compiled Wed 29-Mar-23 00:30 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2023 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+C8KV-4 uptime is 4 hours, 57 minutes
+Uptime for this control processor is 4 hours, 59 minutes
+System returned to ROM by reload
+System restarted at 21:01:59 UTC Mon May 26 2025
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+License Level: 
+License Type: Perpetual
+Next reload license Level: 
+
+Addon License Level: 
+Addon License Type: Subscription
+Next reload addon license Level: 
+
+The current throughput level is 20000 kbps 
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C8000V (VXE) processor (revision VXE) with 1979369K/3075K bytes of memory.
+Processor board ID 9AH2ET3EJ0A
+Router operating mode: Autonomous
+4 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+3964724K bytes of physical memory.
+11526144K bytes of virtual hard disk at bootflash:.
+
+Configuration register is 0x2102', 'Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       & - replicated local route overrides by connected
+
+Gateway of last resort is 100.71.32.1 to network 0.0.0.0
+
+S*    0.0.0.0/0 [1/0] via 100.71.32.1
+      10.0.0.0/8 is variably subnetted, 9 subnets, 2 masks
+D        10.0.12.0/24 [90/3072] via 10.0.24.2, 00:29:07, GigabitEthernet2
+                      [90/3072] via 10.0.14.1, 00:29:07, GigabitEthernet4
+D        10.0.13.0/24 [90/3072] via 10.0.34.3, 00:29:07, GigabitEthernet3
+                      [90/3072] via 10.0.14.1, 00:29:07, GigabitEthernet4
+C        10.0.14.0/24 is directly connected, GigabitEthernet4
+L        10.0.14.4/32 is directly connected, GigabitEthernet4
+D        10.0.23.0/24 [90/3072] via 10.0.34.3, 00:29:07, GigabitEthernet3
+                      [90/3072] via 10.0.24.2, 00:29:07, GigabitEthernet2
+C        10.0.24.0/24 is directly connected, GigabitEthernet2
+L        10.0.24.4/32 is directly connected, GigabitEthernet2
+C        10.0.34.0/24 is directly connected, GigabitEthernet3
+L        10.0.34.4/32 is directly connected, GigabitEthernet3
+      100.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C        100.71.32.0/22 is directly connected, GigabitEthernet1
+L        100.71.34.104/32 is directly connected, GigabitEthernet1
+      192.168.255.0/32 is subnetted, 4 subnets
+D        192.168.255.101 [90/130816] via 10.0.14.1, 00:29:07, GigabitEthernet4
+D        192.168.255.102 [90/130816] via 10.0.24.2, 00:29:07, GigabitEthernet2
+D        192.168.255.103 [90/130816] via 10.0.34.3, 00:29:07, GigabitEthernet3
+C        192.168.255.104 is directly connected, Loopback0', 'Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       & - replicated local route overrides by connected
+
+Gateway of last resort is 100.71.32.1 to network 0.0.0.0
+
+      10.0.0.0/8 is variably subnetted, 9 subnets, 2 masks
+D        10.0.12.0/24 [90/3072] via 10.0.24.2, 00:29:07, GigabitEthernet2
+                      [90/3072] via 10.0.14.1, 00:29:07, GigabitEthernet4
+D        10.0.13.0/24 [90/3072] via 10.0.34.3, 00:29:07, GigabitEthernet3
+                      [90/3072] via 10.0.14.1, 00:29:07, GigabitEthernet4
+D        10.0.23.0/24 [90/3072] via 10.0.34.3, 00:29:07, GigabitEthernet3
+                      [90/3072] via 10.0.24.2, 00:29:07, GigabitEthernet2
+      192.168.255.0/32 is subnetted, 4 subnets
+D        192.168.255.101 [90/130816] via 10.0.14.1, 00:29:07, GigabitEthernet4
+D        192.168.255.102 [90/130816] via 10.0.24.2, 00:29:07, GigabitEthernet2
+D        192.168.255.103 [90/130816] via 10.0.34.3, 00:29:07, GigabitEthernet3', 'EIGRP-IPv4 Neighbors for AS(100)
+H   Address                 Interface              Hold Uptime   SRTT   RTO  Q  Seq
+                                                   (sec)         (ms)       Cnt Num
+2   10.0.34.3               Gi3                      13 00:29:09    2   100  0  18
+1   10.0.24.2               Gi2                      14 00:29:09 1599  5000  0  17
+0   10.0.14.1               Gi4                      11 00:29:09    1   100  0  15']

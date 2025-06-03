@@ -1,0 +1,46 @@
+---
+######################## Start of Code ########################
+# Create a loopback 0 in all routers within topology
+
+- hosts: routers
+  become: yes
+  gather_facts: no
+
+  vars_files:
+    - loopback0.yml
+
+  tasks:
+    - name: Create Loopback0 with different IP per router
+      cisco.ios.ios_interfaces:
+        config:
+          - name: Loopback0
+            description: Created for Ansible Automation!
+            enabled: true
+
+    - name: Add IP address to Loopback0
+      cisco.ios.ios_l3_interfaces:
+        config:
+          - name: Loopback0
+            ipv4:
+              - address: "{{ loopbacks[inventory_hostname] }}"
+        state: merged
+
+
+#  tasks:
+#    - name: Create Loopback0
+#      cisco.ios.ios_interfaces:
+#        config:
+#          - name: Loopback0
+#            description: Created for Ansible Automation!
+#            enabled: true
+#        state: merged
+#
+#    - name: Add IP address to Loopback0
+#      cisco.ios.ios_l3_interfaces:
+#        config:
+#          - name: Loopback100
+#            ipv4:
+#              - address: "{{ loopback_ip }}/32"
+#        state: merged
+
+######################## End of Code ########################       

@@ -1,0 +1,25 @@
+---
+######################## Start of Code ########################
+# Configure cdp on all routers within topology
+
+- name: Enable CDP globally and on all interfaces
+  hosts: routers
+  gather_facts: no
+
+  tasks:
+    - name: Enable CDP globally
+      cisco.ios.ios_config:
+        lines:
+          - cdp run
+
+    - name: Enable CDP on all interfaces
+      cisco.ios.ios_config:
+        lines:
+          - cdp enable
+        parents: "interface {{ item }}"
+      loop:
+        - GigabitEthernet2
+        - GigabitEthernet3
+        - GigabitEthernet4
+
+######################## End of Code ########################         

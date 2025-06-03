@@ -1,0 +1,22 @@
+---
+######################## Start of Code ########################
+# Enable EIGRP 100 in all routers within topology
+
+- name: Configure classic EIGRP 100 on all routers
+  hosts: all
+  gather_facts: no
+  vars_files:
+    - loopback0.yml
+
+  tasks:
+    - name: Configure classic EIGRP router with router-id and networks
+      cisco.ios.ios_config:
+        lines:
+          - router eigrp 100
+          - network 10.0.0.0 0.0.255.255
+          - network 192.168.255.0 0.0.0.255
+          - no auto-summary
+        match: exact
+        replace: line  
+
+######################## End of Code ########################       

@@ -1,0 +1,43 @@
+hostname C8KV-4
+!
+aaa new-model
+aaa authentication login default local
+aaa authorization exec default local 
+!         
+ip domain name www.optilab.com
+!        
+enable secret Admin12345
+!         
+username admin privilege 15 secret Admin12345
+!                     
+interface GigabitEthernet1
+ ip address 100.71.34.104 255.255.225.0
+ no shut
+!                 
+ip http server
+ip http authentication local
+ip http secure-server
+ip http client source-interface GigabitEthernet1
+!
+ip route 0.0.0.0 0.0.0.0 100.71.32.1
+!                  
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+line vty 0 4
+ exec-timeout 0 0
+ transport input ssh
+ logging synchronous
+line vty 5 15
+ exec-timeout 0 0
+ transport input ssh
+ logging synchronous
+!
+crypto key generate rsa modulus 2048
+!        
+end
+wr
+!  

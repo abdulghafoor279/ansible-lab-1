@@ -1,0 +1,22 @@
+---
+# interface_vars.yml
+interfaces:
+  C8KV-1:
+    - { name: GigabitEthernet2, ip: 10.0.12.1, mask: 255.255.255.0 }
+    - { name: GigabitEthernet3, ip: 10.0.13.1, mask: 255.255.255.0 }
+    - { name: GigabitEthernet4, ip: 10.0.14.1, mask: 255.255.255.0 }
+
+  C8KV-2:
+    - { name: GigabitEthernet2, ip: 10.0.12.2, mask: 255.255.255.0 }
+    - { name: GigabitEthernet3, ip: 10.0.23.2, mask: 255.255.255.0 }
+    - { name: GigabitEthernet4, ip: 10.0.24.2, mask: 255.255.255.0 }
+
+  C8KV-3:
+    - { name: GigabitEthernet2, ip: 10.0.23.3, mask: 255.255.255.0 }
+    - { name: GigabitEthernet3, ip: 10.0.13.3, mask: 255.255.255.0 }
+    - { name: GigabitEthernet4, ip: 10.0.34.3, mask: 255.255.255.0 }
+
+  C8KV-4:
+    - { name: GigabitEthernet2, ip: 10.0.24.4, mask: 255.255.255.0 }
+    - { name: GigabitEthernet3, ip: 10.0.34.4, mask: 255.255.255.0 }
+    - { name: GigabitEthernet4, ip: 10.0.14.4, mask: 255.255.255.0 }
